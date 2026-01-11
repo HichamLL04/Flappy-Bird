@@ -2,28 +2,30 @@ using UnityEngine;
 
 public class TubeMovement : MonoBehaviour
 {
-    [SerializeField] float velocidad = 1f;
-    Rigidbody2D rb;
+    [SerializeField] float velocidad = 3f;
+    [SerializeField] float limiteDestruccion = 20;
+
+    float timer;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        timer = limiteDestruccion;
     }
 
     void Update()
     {
-
-    }
-
-    void FixedUpdate()
-    {
         MoverTubo();
+        
+        timer -= Time.deltaTime;
+        
+        if (timer <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void MoverTubo()
     {
-        Vector2 rbPosition = rb.position;
-        rbPosition.x -= velocidad * Time.deltaTime;
-        rb.position = rbPosition;
+        transform.position += Vector3.left * velocidad * Time.deltaTime;
     }
 }

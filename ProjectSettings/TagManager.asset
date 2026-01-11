@@ -13,7 +13,7 @@ TagManager:
   - UI
   - Fondo
   - Suelo
-  - 
+  - Tubos
   - 
   - 
   - 
@@ -43,6 +43,9 @@ TagManager:
     locked: 0
   - name: Fondo
     uniqueID: 4220549769
+    locked: 0
+  - name: Tubos
+    uniqueID: 3692900373
     locked: 0
   - name: Suelo
     uniqueID: 1495380809

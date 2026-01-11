@@ -7,12 +7,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float gravedadBajada = 3f; 
     
     Rigidbody2D rb;
-    CircleCollider2D circleCollider2D;
     
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        circleCollider2D = GetComponent<CircleCollider2D>();
     }
     
     void Update()
@@ -34,9 +32,13 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Tierra"))
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Suelo") || collision.gameObject.layer == LayerMask.NameToLayer("Tubos"))
         {
-            //Die();
+            Die();
+        }
+        else
+        {
+         Debug.Log("Era algo más");
         }
     }
 
