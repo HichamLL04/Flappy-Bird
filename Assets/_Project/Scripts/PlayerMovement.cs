@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse);
+            gameManager.Saltar();
         }
     }
 
@@ -38,11 +39,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Suelo") || collision.gameObject.layer == LayerMask.NameToLayer("Tubos"))
         {
-            Die();
-        }
-        else
-        {
-            Debug.Log("Era algo más");
+            gameManager.Die();
         }
     }
 
@@ -54,11 +51,4 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
-
-    void Die()
-    {
-        Time.timeScale = 0;
-    }
-
-
 }

@@ -36,4 +36,14 @@ public class GameManager : MonoBehaviour
         scoreText.text = puntuacion.ToString();
         
     }
+
+    public void Die()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void Saltar()
+    {
+        audioSource.PlayOneShot(wing);
+    }
 }
