@@ -4,15 +4,19 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float fuerzaSalto = 5f;
-    [SerializeField] float gravedadBajada = 3f; 
-    
+    [SerializeField] float gravedadBajada = 3f;
+    [SerializeField] GameManager gameManager;
+
+
     Rigidbody2D rb;
-    
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
     }
-    
+
     void Update()
     {
         if (rb.linearVelocity.y < 0)
@@ -25,25 +29,36 @@ public class PlayerMovement : MonoBehaviour
     {
         if (value.isPressed)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0); 
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse);
         }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Suelo") || collision.gameObject.layer == LayerMask.NameToLayer("Tubos"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Suelo") || collision.gameObject.layer == LayerMask.NameToLayer("Tubos"))
         {
             Die();
         }
         else
         {
-         Debug.Log("Era algo más");
+            Debug.Log("Era algo más");
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Punto"))
+        {
+            gameManager.sumarPuntuacion();
+        }
+
     }
 
     void Die()
     {
         Time.timeScale = 0;
     }
+
+
 }

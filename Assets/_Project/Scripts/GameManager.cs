@@ -5,22 +5,35 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    [SerializeField] GameObject textMeshProUGUI;
-    TextMeshProUGUI scoreText;
-    float puntuacion = 0; 
+    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] AudioClip die;
+    [SerializeField] AudioClip hit;
+
+    [SerializeField] AudioClip point;
+
+    [SerializeField] AudioClip swoosh;
+
+    [SerializeField] AudioClip wing;
+
+    AudioSource audioSource;
+
+    float puntuacion = 0;
     void Start()
     {
-     scoreText = textMeshProUGUI.GetComponent<TextMeshProUGUI>();
+        scoreText.text = "0";
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
-        
+
     }
 
     public void sumarPuntuacion()
     {
+        audioSource.PlayOneShot(point);
         puntuacion += 1;
         scoreText.text = puntuacion.ToString();
+        
     }
 }
