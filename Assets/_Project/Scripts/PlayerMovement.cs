@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameManager gameManager;
 
     Rigidbody2D rb;
+    bool isAlive = true;
 
 
     void Start()
@@ -26,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnJump(InputValue value)
     {
-        if (value.isPressed)
+        if (value.isPressed && isAlive)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse);
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Suelo") || collision.gameObject.layer == LayerMask.NameToLayer("Tubos"))
         {
             gameManager.Die();
+            isAlive = false;
         }
     }
 
