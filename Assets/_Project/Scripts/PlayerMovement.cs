@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float gravedadBajada = 3f;
     [SerializeField] GameManager gameManager;
 
-
     Rigidbody2D rb;
 
 
