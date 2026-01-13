@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI roundScoreText;
     [SerializeField] TextMeshProUGUI bestScoreText;
     [SerializeField] GameObject gameOver;
+    [SerializeField] GameObject score;
+
     [SerializeField] AudioClip die;
     [SerializeField] AudioClip hit;
     [SerializeField] AudioClip point;
@@ -51,10 +53,11 @@ public class GameManager : MonoBehaviour
 
     public void Die()
     {
-        isAlive = false;
         audioSource.PlayOneShot(hit);
+        score.SetActive(false);
         gameOver.SetActive(true);
         audioSource.PlayOneShot(swoosh);
+        isAlive = false;
         SaveScore();
         roundScoreText.text += scoreText.text;
         bestScoreText.text += PlayerPrefs.GetFloat("BestScore");
