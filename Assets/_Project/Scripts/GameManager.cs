@@ -1,6 +1,10 @@
 using TMPro;
+using Unity.VectorGraphics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +23,7 @@ public class GameManager : MonoBehaviour
     AudioSource audioSource;
 
     float puntuacion = 0;
+    bool isAlive = true;
     void Start()
     {
         scoreText.text = "0";
@@ -28,6 +33,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.Save();
         }
         audioSource = GetComponent<AudioSource>();
+        Time.timeScale = 0;
     }
 
     void Update()
@@ -45,6 +51,7 @@ public class GameManager : MonoBehaviour
 
     public void Die()
     {
+        isAlive = false;
         audioSource.PlayOneShot(hit);
         gameOver.SetActive(true);
         audioSource.PlayOneShot(swoosh);
@@ -59,7 +66,7 @@ public class GameManager : MonoBehaviour
         audioSource.PlayOneShot(wing);
     }
 
-    public void SaveScore()
+    void SaveScore()
     {
         float score = float.Parse(scoreText.text);
 
@@ -68,5 +75,22 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetFloat("BestScore", score);
             PlayerPrefs.Save();
         }
+    }
+
+    void OnJump(InputValue value)
+    {
+        if (value.isPressed && !isAlive)
+        {
+            SceneManager.LoadScene("MainSave");
+        }
+        if (value.isPressed && isAlive && Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
+    }
+
+    public void ReloadGame()
+    {
+        SceneManager.LoadScene("MainSave");
     }
 }
