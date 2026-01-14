@@ -3,7 +3,7 @@ using UnityEngine;
 public class TuboSpawner : MonoBehaviour
 {
     [SerializeField] GameObject tuboPar;
-    [SerializeField] float tiempoEntreSpawns = 2f;
+    [SerializeField] float distanciaEntreTubos = 6f;
     [SerializeField] float posicionSpawnX = 10f;
     [SerializeField] float alturaMinima = -1.05f;
     [SerializeField] float alturaMaxima = 2.30f;
@@ -12,7 +12,7 @@ public class TuboSpawner : MonoBehaviour
     
     void Start()
     {
-        timer = tiempoEntreSpawns;
+        timer = CalcularTiempoSpawn();
     }
     
     void Update()
@@ -22,8 +22,14 @@ public class TuboSpawner : MonoBehaviour
         if (timer <= 0)
         {
             SpawnTubo();
-            timer = tiempoEntreSpawns;
+            timer = CalcularTiempoSpawn();
         }
+    }
+    
+    float CalcularTiempoSpawn()
+    {
+        float velocidad = PlayerPrefs.GetFloat("VelocidadTubos", 2f);
+        return distanciaEntreTubos / velocidad;
     }
     
     void SpawnTubo()

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class TubeMovement : MonoBehaviour
 {
-    [SerializeField] float velocidad = 3f;
     [SerializeField] float limiteDestruccion = 20;
 
     float timer;
@@ -10,6 +9,11 @@ public class TubeMovement : MonoBehaviour
     void Start()
     {
         timer = limiteDestruccion;
+        
+        if (!PlayerPrefs.HasKey("VelocidadTubos"))
+        {
+            PlayerPrefs.SetFloat("VelocidadTubos", 2f);
+        }
     }
 
     void Update()
@@ -26,6 +30,7 @@ public class TubeMovement : MonoBehaviour
 
     void MoverTubo()
     {
+        float velocidad = PlayerPrefs.GetFloat("VelocidadTubos");
         transform.position += Vector3.left * velocidad * Time.deltaTime;
     }
 }

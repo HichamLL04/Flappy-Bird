@@ -2360,7 +2360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TuboSpawner
   tuboPar: {fileID: 4595832949371566578, guid: dcdd4ffb921dfd74da0ceada1ed1f798, type: 3}
-  tiempoEntreSpawns: 1.7
+  distanciaEntreTubos: 4
   posicionSpawnX: 9.7
   alturaMinima: -8.1
   alturaMaxima: -5.26
@@ -2394,6 +2394,8 @@ MonoBehaviour:
   scoreText: {fileID: 1485856666}
   roundScoreText: {fileID: 2058734096}
   bestScoreText: {fileID: 1959660742}
+  velocidadTubos: 1
+  velocidadSubir: 0.5
   gameOver: {fileID: 1992987915}
   score: {fileID: 1485856664}
   die: {fileID: 8300000, guid: 4debc2dfc88a0a24cb6dc3d440c8c89a, type: 3}

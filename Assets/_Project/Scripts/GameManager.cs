@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI roundScoreText;
     [SerializeField] TextMeshProUGUI bestScoreText;
+
+    [SerializeField] float velocidadTubos = 1f;
+    [SerializeField] float velocidadSubir = 1f;
+
+
     [SerializeField] GameObject gameOver;
     [SerializeField] GameObject score;
 
@@ -25,18 +30,23 @@ public class GameManager : MonoBehaviour
     AudioSource audioSource;
 
     float puntuacion = 0;
-    bool isAlive = true;
     float timeSinceDeath = 0f;
     float deathDelay = 1f;
+    bool isAlive = true;
+
     
     void Start()
     {
         scoreText.text = "0";
+        
         if (!PlayerPrefs.HasKey("BestScore"))
         {
             PlayerPrefs.SetFloat("BestScore", 0f);
             PlayerPrefs.Save();
         }
+        
+        PlayerPrefs.SetFloat("VelocidadTubos", 2f);
+        
         audioSource = GetComponent<AudioSource>();
         Time.timeScale = 0;
     }
@@ -55,6 +65,11 @@ public class GameManager : MonoBehaviour
         puntuacion += 1;
         scoreText.text = puntuacion.ToString();
 
+        if (puntuacion % 10 == 0)
+        {
+            float velocidadActual = PlayerPrefs.GetFloat("VelocidadTubos");
+            PlayerPrefs.SetFloat("VelocidadTubos", velocidadActual + velocidadSubir);
+        }
     }
 
     public void Die()
