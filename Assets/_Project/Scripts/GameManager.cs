@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
 
     float puntuacion = 0;
     bool isAlive = true;
+    float timeSinceDeath = 0f;
+    float deathDelay = 1f;
+    
     void Start()
     {
         scoreText.text = "0";
@@ -40,7 +43,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-
+        if (!isAlive)
+        {
+            timeSinceDeath += Time.unscaledDeltaTime;
+        }
     }
 
     public void sumarPuntuacion()
@@ -58,6 +64,7 @@ public class GameManager : MonoBehaviour
         gameOver.SetActive(true);
         audioSource.PlayOneShot(swoosh);
         isAlive = false;
+        timeSinceDeath = 0f;
         SaveScore();
         roundScoreText.text += scoreText.text;
         bestScoreText.text += PlayerPrefs.GetFloat("BestScore");
@@ -82,7 +89,7 @@ public class GameManager : MonoBehaviour
 
     void OnJump(InputValue value)
     {
-        if (value.isPressed && !isAlive)
+        if (value.isPressed && !isAlive && timeSinceDeath >= deathDelay)
         {
             SceneManager.LoadScene("MainSave");
         }
