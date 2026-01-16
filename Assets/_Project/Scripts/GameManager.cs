@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI roundScoreText;
     [SerializeField] TextMeshProUGUI bestScoreText;
 
-    [SerializeField] float velocidadTubos = 1f;
+    [SerializeField] float velocidadTubos = 2f;
     [SerializeField] float velocidadSubir = 1f;
 
     [SerializeField] GameObject gameOver;
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.Save();
         }
         
-        PlayerPrefs.SetFloat("VelocidadTubos", 2f);
+        PlayerPrefs.SetFloat("VelocidadTubos", velocidadTubos);
         
         audioSource = GetComponent<AudioSource>();
         hasStarted = false;
