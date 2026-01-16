@@ -17,6 +17,8 @@ public class TuboSpawner : MonoBehaviour
     
     void Update()
     {
+        if (!GameManager.hasStarted) return;
+        
         timer -= Time.deltaTime;
         
         if (timer <= 0)

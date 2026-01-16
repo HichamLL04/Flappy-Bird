@@ -10,11 +10,10 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     bool isAlive = true;
 
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        rb.gravityScale = 0;
     }
 
     void Update()
@@ -29,6 +28,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (value.isPressed && isAlive)
         {
+            if (rb.gravityScale == 0)
+            {
+                rb.gravityScale = 1;
+            }
+            
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0);
             rb.AddForce(Vector2.up * fuerzaSalto, ForceMode2D.Impulse);
             gameManager.Saltar();
@@ -50,6 +54,5 @@ public class PlayerMovement : MonoBehaviour
         {
             gameManager.sumarPuntuacion();
         }
-
     }
 }

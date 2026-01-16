@@ -18,6 +18,8 @@ public class TubeMovement : MonoBehaviour
 
     void Update()
     {
+        if (!GameManager.hasStarted) return;
+        
         MoverTubo();
         
         timer -= Time.deltaTime;

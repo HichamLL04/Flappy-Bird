@@ -8,14 +8,12 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI roundScoreText;
     [SerializeField] TextMeshProUGUI bestScoreText;
 
     [SerializeField] float velocidadTubos = 1f;
     [SerializeField] float velocidadSubir = 1f;
-
 
     [SerializeField] GameObject gameOver;
     [SerializeField] GameObject score;
@@ -26,13 +24,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioClip swoosh;
     [SerializeField] AudioClip wing;
 
-
     AudioSource audioSource;
 
     float puntuacion = 0;
     float timeSinceDeath = 0f;
     float deathDelay = 1f;
     bool isAlive = true;
+    
+    public static bool hasStarted = false;
 
     
     void Start()
@@ -48,7 +47,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetFloat("VelocidadTubos", 2f);
         
         audioSource = GetComponent<AudioSource>();
-        Time.timeScale = 0;
+        hasStarted = false;
     }
 
     void Update()
@@ -89,6 +88,11 @@ public class GameManager : MonoBehaviour
     public void Saltar()
     {
         audioSource.PlayOneShot(wing);
+        
+        if (!hasStarted)
+        {
+            hasStarted = true;
+        }
     }
 
     void SaveScore()
@@ -107,10 +111,6 @@ public class GameManager : MonoBehaviour
         if (value.isPressed && !isAlive && timeSinceDeath >= deathDelay)
         {
             SceneManager.LoadScene("MainSave");
-        }
-        if (value.isPressed && isAlive && Time.timeScale == 0)
-        {
-            Time.timeScale = 1;
         }
     }
 

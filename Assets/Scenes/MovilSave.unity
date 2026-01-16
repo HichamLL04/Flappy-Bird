@@ -639,7 +639,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6950192, y: -0.2825347, z: -10}
+  m_LocalPosition: {x: 0.80735874, y: -0.2825347, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1238,7 +1238,7 @@ Transform:
   m_GameObject: {fileID: 1544394206}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6950207, y: -0.74626446, z: -10}
+  m_LocalPosition: {x: 3.1933315, y: -0.74626446, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2360,7 +2360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TuboSpawner
   tuboPar: {fileID: 4595832949371566578, guid: dcdd4ffb921dfd74da0ceada1ed1f798, type: 3}
-  tiempoEntreSpawns: 1.7
+  distanciaEntreTubos: 4
   posicionSpawnX: 9.7
   alturaMinima: -8.1
   alturaMaxima: -5.26
@@ -2394,6 +2394,8 @@ MonoBehaviour:
   scoreText: {fileID: 1485856666}
   roundScoreText: {fileID: 2058734096}
   bestScoreText: {fileID: 1959660742}
+  velocidadTubos: 1.3
+  velocidadSubir: 0.5
   gameOver: {fileID: 1992987915}
   score: {fileID: 1485856664}
   die: {fileID: 8300000, guid: 4debc2dfc88a0a24cb6dc3d440c8c89a, type: 3}
