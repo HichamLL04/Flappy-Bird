@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
         puntuacion += 1;
         scoreText.text = puntuacion.ToString();
 
-        if (puntuacion % 10 == 0)
+        if (puntuacion % 5 == 0)
         {
             float velocidadActual = PlayerPrefs.GetFloat("VelocidadTubos");
             PlayerPrefs.SetFloat("VelocidadTubos", velocidadActual + velocidadSubir);
