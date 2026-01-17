@@ -8,12 +8,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainSave.unity
     guid: f573ef584cc5ecf4a986e4f22749405b
   - enabled: 0
     path: Assets/Scenes/MovilSave.unity
     guid: afd9e4f02d112e14681ff6d9910b1dfd
+  - enabled: 1
+    path: Assets/Scenes/WebSave.unity
+    guid: e8b13daeead941f43917a206240f5189
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 3fd7c671e2d858840b2b26b37cad1fb8, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: a3c7dc66fa13f7945a514307f459223a, type: 3}

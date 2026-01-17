@@ -104,17 +104,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void OnJump(InputValue value)
-    {
-        if (value.isPressed && !isAlive && timeSinceDeath >= deathDelay)
-        {
-            ReloadGame();
-        }
-    }
-
     public void ReloadGame()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("MainSave");
+        SceneManager.LoadScene("WebSave");
     }
 }
