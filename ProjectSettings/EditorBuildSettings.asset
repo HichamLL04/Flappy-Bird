@@ -15,5 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MovilSave.unity
     guid: afd9e4f02d112e14681ff6d9910b1dfd
   m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+    com.unity.input.settings: {fileID: 11400000, guid: 3fd7c671e2d858840b2b26b37cad1fb8, type: 2}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: a3c7dc66fa13f7945a514307f459223a, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -1,10 +1,7 @@
 using TMPro;
-using Unity.VectorGraphics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
-
 
 public class GameManager : MonoBehaviour
 {
@@ -33,9 +30,10 @@ public class GameManager : MonoBehaviour
     
     public static bool hasStarted = false;
 
-    
     void Start()
     {
+        Time.timeScale = 1;
+        
         scoreText.text = "0";
         
         if (!PlayerPrefs.HasKey("BestScore"))
@@ -110,12 +108,13 @@ public class GameManager : MonoBehaviour
     {
         if (value.isPressed && !isAlive && timeSinceDeath >= deathDelay)
         {
-            SceneManager.LoadScene("MainSave");
+            ReloadGame();
         }
     }
 
     public void ReloadGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainSave");
     }
 }

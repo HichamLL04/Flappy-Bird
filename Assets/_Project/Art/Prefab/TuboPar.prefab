@@ -213,8 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 564959da193aff34d9db68194de71391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TubeMovement
-  velocidad: 2
-  limiteDestruccion: 10
+  limiteDestruccion: 35
 --- !u!1 &7003164257734183942
 GameObject:
   m_ObjectHideFlags: 0
